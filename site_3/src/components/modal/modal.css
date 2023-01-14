@@ -1,0 +1,125 @@
+.modal_wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.modal_block {
+  width: 960px;
+  height: 715px;
+  background: #fff;
+  background: url(../../assets//modal-back.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 55px 225px 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.modal_title h1 {
+  color: #6666;
+  margin-bottom: 30px;
+}
+
+.modal_block form {
+  width: 100%;
+}
+
+.modal_block form input {
+  width: 100%;
+  height: 50px;
+  border: none;
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid #eee;
+  border-radius: 3px;
+}
+
+.modal_block span {
+  color: #f90c0c;
+  font-size: 12px;
+}
+
+.signin_button input {
+  cursor: pointer;
+  height: 65px;
+  background: #cc0000;
+  color: #fff;
+  transition: all 0.5s ease;
+  margin-bottom: 30px;
+}
+
+.signin_button input:hover {
+  transition: all 0.5s ease;
+  background: #aa0000;
+}
+
+.no-suggestions {
+  color: #999;
+  padding: 0.5rem;
+}
+
+.suggestions {
+  width: 100%;
+  border: 1px solid #999;
+  background: #fff;
+  border-top-width: 0;
+  list-style: none;
+  margin-top: 0;
+  max-height: 143px;
+  overflow-y: auto;
+  padding-left: 0;
+}
+
+.suggestions li {
+  padding: 0.5rem;
+}
+
+.suggestion-active,
+.suggestions li:hover {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.suggestions li:not(:last-of-type) {
+  border-bottom: 1px solid #999;
+}
+
+.suggestions::-webkit-scrollbar {
+  width: 3px;
+  height: 4px;
+  background-color: rgba(170, 170, 170, 0.56);
+}
+
+.suggestions:-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.289);
+}
+
+@media only screen and (max-width: 1020px) {
+  .modal_block {
+    width: 380px;
+    height: 80vh;
+    padding: 0 15px;
+    border-radius: 10px;
+  }
+  .modal_title h1 {
+    font-size: 20px;
+    margin-bottom: 0;
+    margin-top: 30px;
+  }
+}

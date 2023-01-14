@@ -1,0 +1,248 @@
+.home_page {
+  width: 100%;
+  height: 100vh;
+  background: url(../assets/back_img.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+
+.regisration_form {
+  width: 520px;
+  height: 485px;
+  background: #ffffffe6;
+  border-radius: 10px;
+  margin-left: 8%;
+  padding: 35px 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 85;
+}
+
+.form_logo {
+  background: #c00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.form_title h1 {
+  margin-top: 15px;
+  font-size: 32px;
+  text-align: center;
+  color: #222222;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+.form_title p {
+  color: #717171;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.genders_toggles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.genders_toggles svg {
+  margin-top: 8px;
+  width: 40px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.genders_toggles svg path {
+  fill: #cccccc;
+}
+.male_active_svg path {
+  fill: #0d8fba !important;
+}
+.famale_active_svg path {
+  fill: #e6282e !important;
+}
+.genders_toggles .my_gender_iden .my_genderis,
+.genders_toggles .seeking_gender_iden .sheeking_genderis {
+  display: flex;
+  align-items: center;
+}
+.genders_toggles .my_gender_iden,
+.genders_toggles .seeking_gender_iden {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.genders_toggles .my_gender_iden p,
+.genders_toggles .seeking_gender_iden p {
+  margin-right: 10px;
+  font-size: 18px;
+  color: #222;
+}
+.error_gender p {
+  color: #c00 !important;
+  font-size: 10px !important;
+}
+
+.between_ages {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.between_ages p {
+  font-size: 18px;
+  color: #222;
+}
+
+.between_ages select,
+.between_ages option {
+  width: 60px;
+  height: 30px;
+  border: #717171;
+  outline: none;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+}
+
+.between_ages select::-webkit-scrollbar,
+.between_ages option::-webkit-scrollbar {
+  width: 3px;
+  height: 4px;
+  background-color: rgba(170, 170, 170, 0.56);
+}
+
+.between_ages select::-webkit-scrollbar-thumb,
+.between_ages option::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.289);
+}
+
+.take_chance {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.take_chance button {
+  width: 100%;
+  background: #c00;
+  cursor: pointer;
+  height: 50px;
+  border: #fff;
+  font-size: 18px;
+  transition: 0.3s ease;
+  color: #fff;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  box-shadow: rgb(0 0 0 / 12%) 0 1px 6px, rgb(0 0 0 / 12%) 0 1px 4px;
+  border-radius: 5px;
+}
+
+.take_chance button:hover {
+  background: rgb(5, 129, 131);
+}
+
+.agreement_policy {
+  width: 100%;
+}
+.agreement_policy p {
+  font-size: 11px;
+  color: #717171;
+  text-align: center;
+}
+.agreement_policy p span {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.mobile_background {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #22222280;
+  z-index: 80;
+}
+
+.mobile_logo {
+  position: absolute;
+  z-index: 85;
+  top: 15px;
+  left: 15px;
+  display: none;
+}
+.mobile_logo img {
+  width: 150px;
+}
+
+@media only screen and (max-width: 630px) {
+  .mobile_background {
+    display: flex;
+  }
+  .mobile_logo {
+    display: block;
+  }
+  .home_page {
+    background: url(../assets/back_img2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    padding: 0 80px;
+  }
+  .regisration_form {
+    width: 100%;
+    height: 485px;
+    background: transparent;
+    margin-left: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .form_logo {
+    display: none;
+  }
+  header h1,
+  header p {
+    color: #fff !important;
+    font-weight: 600 !important;
+  }
+  .my_genderis,
+  .sheeking_genderis {
+    flex-direction: column;
+  }
+  .between_ages span {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .home_page {
+    padding: 0 20px;
+  }
+  .between_ages p {
+    font-size: 14px;
+  }
+  .form_title h1 {
+    margin-top: 80px;
+    font-size: 28px;
+
+    margin-bottom: 10px;
+  }
+  .form_title p {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+}
