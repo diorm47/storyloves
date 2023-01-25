@@ -26,16 +26,38 @@ class Autocomplete extends Component {
       showSuggestions: false,
       // What the user has entered
       userInput: "",
+      countryCode: "US",
     };
   }
 
+  getCountry = async () => {
+    let headersList = {
+      Accept: "*/*",
+    };
+
+    let reqOptions = {
+      url: "http://ipwho.is/",
+      method: "GET",
+      headers: headersList,
+    };
+
+    let response = await axios.request(reqOptions);
+
+    this.setState({
+      countryCode: response.data.country_code,
+    });
+    this.props.setCcode(response.data.country_code);
+  };
+  componentDidMount() {
+    this.getCountry();
+  }
   getData = [];
   setSuggestions = async (props) => {
     let headersList = {
       Accept: "*/*",
     };
     let reqOptions = {
-      url: `https://api.storyloves.net/suggest/city?query=${props}&ccode=ES`,
+      url: `https://api.storyloves.net/suggest/city?ccode=${this.state.countryCode}&query=${props}`,
       method: "GET",
       headers: headersList,
     };
@@ -152,6 +174,7 @@ function HomePage() {
   const [locationError, setLocationError] = useState(false);
   const [seconFieldActive, setSeconFieldActive] = useState(false);
   const [emailError, setEmailError] = useState(0);
+  const [ccode, setCcode] = useState("");
   const {
     register: register2,
     formState: { errors: errors2 },
@@ -176,7 +199,7 @@ function HomePage() {
     };
 
     let reqOptions = {
-      url: `https://api.storyloves.net/suggest/city?query=${city}&ccode=ES`,
+      url: `https://api.storyloves.net/suggest/city?ccode=${ccode}&query=${city}`,
       method: "GET",
       headers: headersList,
     };
@@ -216,15 +239,28 @@ function HomePage() {
   };
 
   const onSubmit = async (data) => {
+    let params = new URL(document.location).searchParams;
+
     let formdata = new FormData();
-    formdata.append("ccode", "us");
+    formdata.append("ccode", `${ccode}`);
     formdata.append("city", `${ref.current.state.userInput}`);
     formdata.append("age", `${userAge}`);
     formdata.append("city_id", `${cityId}`);
     formdata.append("email", `${data.email}`);
-    formdata.append("name", `${userName}`);
+    formdata.append("name", `${data.name}`);
     formdata.append("password", `${data.password}`);
-
+    if (params.get("source")) {
+      formdata.append("source", `${params.get("source")}`);
+      formdata.append("l", `${params.get("I")}`);
+      formdata.append("platform", `${params.get("platform")}`);
+      formdata.append("extwb", `${params.get("extwb")}`);
+      formdata.append("adult", `${params.get("adult")}`);
+      formdata.append("ukey", `${params.get("ukey")}`);
+      formdata.append("subacc", `${params.get("subacc")}`);
+      formdata.append("subid", `${params.get("subid")}`);
+      formdata.append("app", `${params.get("app")}`);
+      formdata.append("gaid", `${params.get("gaid")}`);
+    }
     let bodyContent = formdata;
     let headersList = {
       Accept: "*/*",
@@ -347,7 +383,11 @@ function HomePage() {
                       )}
                     </div>
                     <div className="your_city">
-                      <Autocomplete getcityId={getcityId} ref={ref} />
+                      <Autocomplete
+                        getcityId={getcityId}
+                        ref={ref}
+                        setCcode={setCcode}
+                      />
                       {locationError ? (
                         <span>* Se requiere ubicación</span>
                       ) : (

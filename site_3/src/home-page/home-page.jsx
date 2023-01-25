@@ -41,6 +41,7 @@ function HomePage() {
     }
   };
 
+
   const setModal = () => {
     if (!myGender || !seekingGender) {
       setMyGenderError(true);
